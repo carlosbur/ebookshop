@@ -1,8 +1,8 @@
-import { FlatList, SafeAreaView, View } from "react-native";
+import { FlatList, SafeAreaView, View } from 'react-native';
 
-import { styles } from "./styles";
-import { CategoryItem } from "../../components";
-import CATEGORIES from "../../constants/data/categories.json";
+import { styles } from './styles';
+import { CategoryItem } from '../../components';
+import CATEGORIES from '../../constants/data/categories.json';
 
 function Categories({ onSelectCategory }) {
     return (
@@ -13,7 +13,12 @@ function Categories({ onSelectCategory }) {
             style={styles.categoryContainer}
             contentContainerStyle={styles.listCategory}
             renderItem={({ item }) => (
-                <CategoryItem {...item} onSelectCategory={onSelectCategory} />
+                <CategoryItem
+                {...item}
+                onSelectCategory={() =>
+                    onSelectCategory({ categoryId: item.id, color: item.backgroundColor })
+                }
+                />
             )}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
