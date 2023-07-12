@@ -34,7 +34,7 @@ export default function App() {
     if (!loaded) {
         return (
         <View style={styles.loaderContainer}>
-        <ActivityIndicator color={COLORS.primary}/>
+        <ActivityIndicator color={COLORS.primary} size={'large'}/>
         </View>
         )    }
 

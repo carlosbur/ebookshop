@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     },
     categoryName:{
         fontSize: 20,
-        fontWeight: 'bold',
+        fontFamily: 'Montserrat-Bold',
         color: COLORS.white,
         padding: 20,
         textShadowColor: 'rgba(0,0, 0, 0.75)',
