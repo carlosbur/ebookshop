@@ -1,4 +1,4 @@
-import { FlatList, SafeAreaView, View } from 'react-native';
+import { FlatList, SafeAreaView, View} from 'react-native';
 
 import { styles } from './styles';
 import { CategoryItem } from '../../components';
