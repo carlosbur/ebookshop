@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { SafeAreaView, StyleSheet, View, Text, Button } from 'react-native';
-
+import { SafeAreaView, StyleSheet, View, Text, Button, ActivityIndicator } from 'react-native';
+import {useFonts} from 'expo-font';
 import { Header } from './components';
 import { Categories, Products } from './screens';
 import { COLORS } from './themes';
@@ -9,7 +9,14 @@ const categoryDefault = {
     categoryId: null,
     color: COLORS.primary,
     };
-    export default function App() {
+export default function App() {
+    const [loaded, error] = useFonts({
+        'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+        'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+        'Montserrat-Light': require('../assets/fonts/Montserrat-Light.ttf'),
+        'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+
+    })
     const [isCategorySelected, setIsCategorySelected] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(categoryDefault);
 
@@ -23,6 +30,13 @@ const categoryDefault = {
         setIsCategorySelected(!isCategorySelected);
         setSelectedCategory(categoryDefault);
     };
+
+    if (!loaded) {
+        return (
+        <View style={styles.loaderContainer}>
+        <ActivityIndicator color={COLORS.primary}/>
+        </View>
+        )    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -42,4 +56,9 @@ const categoryDefault = {
     container: {
         flex: 1,
     },
+    loaderContainer:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 });
