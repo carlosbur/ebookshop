@@ -7,6 +7,7 @@ const CategoryItem = ({id,
     backgroundColor,
     backgroundImage, onSelectCategory }) => {
         const {width, height} = useWindowDimensions()
+        const isTablet = width > 650;
         return (
             <TouchableHighlight 
                 onPress={() => onSelectCategory(id)} 
@@ -14,9 +15,9 @@ const CategoryItem = ({id,
                 underlayColor={COLORS.primary}>
                 <ImageBackground 
                 source={{uri: backgroundImage}} 
-                style={ width > 650 ? styles.imageBackgroundTable : styles.imageBackground} 
-                resizeMode= { width >650 ? "contain" : "cover"}>
-                <Text style={ width > 650? styles.categoryNameTablet : styles.categoryName}>{name}</Text>
+                style={ isTablet ? styles.imageBackgroundTablet : styles.imageBackground} 
+                resizeMode= { isTablet ? "contain" : "cover"}>
+                <Text style={ isTablet ? styles.categoryNameTablet : styles.categoryName}>{name}</Text>
                 </ImageBackground>
             </TouchableHighlight>
         )
