@@ -5,9 +5,9 @@ import { COLORS } from "../../../themes/colors";
 const CategoryItem = ({id, 
     name, 
     backgroundColor,
-    backgroundImage, onSelectCategory }) => {
-        const {width, height} = useWindowDimensions()
-        const isTablet = width > 650;
+    backgroundImage, onSelectCategory, style }) => {
+        // const {width, height} = useWindowDimensions()
+        // const isTablet = width > 650;
         return (
             <TouchableHighlight 
                 onPress={() => onSelectCategory(id)} 
@@ -15,9 +15,9 @@ const CategoryItem = ({id,
                 underlayColor={COLORS.primary}>
                 <ImageBackground 
                 source={{uri: backgroundImage}} 
-                style={ isTablet ? styles.imageBackgroundTablet : styles.imageBackground} 
-                resizeMode= { isTablet ? "contain" : "cover"}>
-                <Text style={ isTablet ? styles.categoryNameTablet : styles.categoryName}>{name}</Text>
+                style={ [styles.imageBackground, style]} 
+                resizeMode= {"cover"}>
+                <Text style={ styles.categoryName}>{name}</Text>
                 </ImageBackground>
             </TouchableHighlight>
         )
