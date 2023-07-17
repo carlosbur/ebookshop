@@ -39,10 +39,6 @@ function Product({ navigation, route }) {
 
     return (
         <View style={styles.container}>
-        <TouchableOpacity style={styles.goBack}>
-            <Ionicons name="arrow-back-circle" size={30} color={COLORS.black} />
-            <Text style={styles.goBackText}>Go back</Text>
-        </TouchableOpacity>
         <View style={styles.header}>
             <Input
             onHandleBlur={onHandleBlur}
