@@ -1,16 +1,15 @@
 import { createNativeStackNavigator} from "@react-navigation/native-stack";
-import { CardStyleInterpolators } from "@react-navigation/stack";
+
 import { Categories, Products } from '../screens'
 import { COLORS } from "../themes";
 import { Ionicons } from '@expo/vector-icons'
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
 function ShopNavigator(){
     return (
-        <Stack.Navigator initialRouteName="Categories" screenOptions= {{ CardStyleInterpolators : CardStyleInterpolators.forRevealFromBottomAndroid,
-        presentation: 'card',
+        <Stack.Navigator initialRouteName="Categories" screenOptions= {{ 
         headerStyle: {
             backgroundColor: COLORS.primary,
         },
@@ -19,6 +18,7 @@ function ShopNavigator(){
             fontSize: 20,
         },
         headerTintColor: COLORS.white,
+        animation: 'slide_from_bottom'
         }}>
             <Stack.Screen name="Categories" component={Categories} />
             <Stack.Screen name="Products" component={Products} options={ ({navigation, route}) => ({
