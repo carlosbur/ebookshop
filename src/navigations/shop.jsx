@@ -19,17 +19,15 @@ function ShopNavigator(){
             fontSize: 20,
         },
         headerTintColor: COLORS.white,
-        
-
         }}>
             <Stack.Screen name="Categories" component={Categories} />
-            <Stack.Screen name="Products" component={Products} options={ ({navigation}) => (
-                
-                {
+            <Stack.Screen name="Products" component={Products} options={ ({navigation, route}) => ({
+                headerStyle:{
+                    backgroundColor: route.params.color,                    
+                },
                 headerLeft: () => (
                     <TouchableOpacity style={styles.goBack} onPress={() => navigation.goBack()}>
                     <Ionicons name="arrow-back-circle" size={30} color={COLORS.black} />
-                    <Text style={styles.goBackText}>Back</Text>
                     </TouchableOpacity>
                 ),
             })} 
@@ -43,10 +41,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingVertical: 10,
-    },
-    goBackText: {
-        fontSize: 14,
-        color: COLORS.text,
     },
 })
 

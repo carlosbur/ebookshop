@@ -39,24 +39,24 @@ function Product({ navigation, route }) {
 
     return (
         <View style={styles.container}>
-        <View style={styles.header}>
-            <Input
-            onHandleBlur={onHandleBlur}
-            onHandleChangeText={onHandleChangeText}
-            onHandleFocus={onHandleFocus}
-            value={search}
-            placeholder="Search"
-            borderColor={borderColor}
-            />
-            {search.length > 0 && (
-            <Ionicons
-                style={styles.clearIcon}
-                onPress={clearSearch}
-                name="close-circle"
-                size={20}
-                color={COLORS.black}
-            />
-            )}
+            <View style={styles.header}>
+                <Input
+                onHandleBlur={onHandleBlur}
+                onHandleChangeText={onHandleChangeText}
+                onHandleFocus={onHandleFocus}
+                value={search}
+                placeholder="Search"
+                borderColor={borderColor}
+                />
+                {search.length > 0 && (
+                <Ionicons
+                    style={styles.clearIcon}
+                    onPress={clearSearch}
+                    name="close-circle"
+                    size={20}
+                    color={COLORS.black}
+                />
+                )}
         </View>
         <FlatList
             style={styles.products}
