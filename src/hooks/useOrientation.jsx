@@ -27,6 +27,6 @@ export default function useOrientation() {
 
         
     }, [])
-    
+        
     return ScreenOrientation == 3 || screenOrientation == 4 ? 'LANDSCAPE' : 'PORTRAIT';
 }
