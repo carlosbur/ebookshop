@@ -16,6 +16,7 @@ function ProductDetail({ navigation, route }) {
                 <Text style={styles.name}>{product.name}</Text>
                 <Text style={styles.description}>{product.description}</Text>
                 <Text style={styles.price}>ARS {product.price}</Text>
+                <Text style={styles.tagTitle}>Tags</Text>
                 <View style={styles.containerTags}>
                     {product.tags.map((tag) => ( 
                         <View key={tag} style={[styles.containerTag, {backgroundColor:color}]}>
