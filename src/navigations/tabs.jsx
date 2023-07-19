@@ -35,7 +35,14 @@ const TabNavigator = () => {
                 tabBarLabel: 'Cart',
                 tabBarIcon: ({focused, color, size}) => (
                     <Ionicons name={focused ? 'cart' : 'cart-outline'} size={size} color={color} />
-                )
+                ),
+                tabBarBadge: 2,
+                tabBarBadgeStyle:{
+                    backgroundColor: COLORS.secondary,
+                    color: COLORS.white,
+                    fontFamily: "Montserrat-Regular",
+                    fontSize: 11,
+                }
             }} />
             <BottomTab.Screen name="OrdersTab" component={OrdersNavigator} options={{
                 tabBarLabel: 'Orders',
