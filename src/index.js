@@ -4,10 +4,6 @@ import {useFonts} from 'expo-font';
 import { COLORS } from './themes';
 import RootNavigator from './navigations';
 
-// const categoryDefault = {
-//     categoryId: null,
-//     color: COLORS.primary,
-//     };
 export default function App() {
     const [loaded, error] = useFonts({
         'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
@@ -16,20 +12,7 @@ export default function App() {
         'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
 
     })
-    // const [isCategorySelected, setIsCategorySelected] = useState(false);
-    // const [selectedCategory, setSelectedCategory] = useState(categoryDefault);
-
-    // const headerTitle = isCategorySelected ? 'Products' : 'Categories';
-
-    // const onHandleSelectCategory = ({ categoryId, color }) => {
-    //     setSelectedCategory({ categoryId, color });
-    //     setIsCategorySelected(!isCategorySelected);
-    // };
-    // const onHandleNavigate = () => {
-    //     setIsCategorySelected(!isCategorySelected);
-    //     setSelectedCategory(categoryDefault);
-    // };
-
+    
     if (!loaded) {
         return (
         <View style={styles.loaderContainer}>
