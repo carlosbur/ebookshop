@@ -12,20 +12,18 @@ const CartItem = ({id, categoryId, name, price, image, currency, quantity,stock,
             <View style={styles.detailContainer}>
             <Text style={styles.name}>{name}</Text>
             <Text style={styles.price}>{`${currency.code} ${price}`}</Text>
-            <Text style={styles.qty}>qty: {quantity}</Text>
-            <Text style={styles.stock}>stock: {stock}</Text>
-            <TouchableOpacity style={styles.increaseButton} onPress={() => {}}>
-                <Text style={styles.increaseButtonText}>+</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.decreaseButton} onPress={() => {}}>
-                <Text style={styles.decreaseButtonText}>-</Text>
-            </TouchableOpacity>
-            </View>
-            <View style={styles.deleteContainer}>
-                <TouchableOpacity onPress={() => {}}>
-                    <Ionicons name='trash' size={22} color={COLORS.secondary} />
+            <Text style={styles.qty}>{`qty: ${quantity} stock: ${stock}`}</Text>
+            <View style={styles.actionContainer}>
+                <TouchableOpacity style={styles.increaseButton} onPress={() => {}}>
+                    <Text style={styles.increaseButtonText}>+</Text>
                 </TouchableOpacity>
-
+                <TouchableOpacity style={styles.decreaseButton} onPress={() => {}}>
+                    <Text style={styles.decreaseButtonText}>-</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {}} style={styles.deleteButton}>
+                    <Ionicons name='trash' size={16} color={COLORS.white} />
+                </TouchableOpacity>
+            </View>
             </View>
         </View>
     );

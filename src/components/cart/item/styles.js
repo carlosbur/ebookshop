@@ -42,15 +42,62 @@ export const styles = StyleSheet.create({
     detailContainer:{
         justifyContent: 'space-between',
         maxWidth: 190,
+        gap: 5,
     },
-    name:{},
-    price:{},
-    qty:{},
-    stock:{},
-    increaseButton:{},
-    decreaseButton:{},
-    decreaseButtonText:{},
-    deleteContainer:{
+    name:{
+        fontSize: 13,
+        fontFamily: "Montserrat-Regular",
 
+    },
+    price:{
+        fontSize: 14,
+        fontFamily: "Montserrat-Bold",
+
+    },
+    qty:{
+        fontSize: 12,
+        fontFamily: "Montserrat-Regular",
+
+    },
+    stock:{
+        fontSize: 12,
+        fontFamily: "Montserrat-Regular",
+
+    },
+    actionContainer:{
+        flexDirection: 'row',
+        gap: 20,
+    },
+
+    increaseButton:{
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        backgroundColor: COLORS.secondary,
+        borderRadius: 20,
+        
+    },
+    increaseButtonText:{
+        color: COLORS.white,
+        fontFamily: "Montserrat-Bold",
+        fontSize: 16,
+    },
+    decreaseButton:{
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        backgroundColor: COLORS.primary,
+        borderRadius: 20,    
+            
+    },
+    decreaseButtonText:{
+        color: COLORS.white,
+        fontFamily: "Montserrat-Bold",
+        fontSize: 16,
+    },
+    deleteButton:{
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        backgroundColor: COLORS.primary,
+        borderRadius: 20,    
+            
     },
 })
