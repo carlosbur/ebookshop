@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     container:{
         flex: 1,
         flexDirection: 'row',
-        height: 130,
+        height: 145,
         backgroundColor: COLORS.white,
         shadowColor: '#000',
         shadowOffset: {
@@ -20,8 +20,7 @@ export const styles = StyleSheet.create({
         marginTop: 15,
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        borderRadius: 10,
-        gap: 15,
+        borderRadius: 5,
         },
 
     imageContainer: {
@@ -29,7 +28,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: COLORS.primary,
         maxWidth: 120,
-        borderRadius: 10,
+        borderRadius: 5,
 
 
     },
@@ -70,8 +69,10 @@ export const styles = StyleSheet.create({
     },
 
     increaseButton:{
-        paddingVertical: 10,
-        paddingHorizontal: 15,
+        width: 35,
+        height: 35,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: COLORS.secondary,
         borderRadius: 20,
         
@@ -82,8 +83,10 @@ export const styles = StyleSheet.create({
         fontSize: 16,
     },
     decreaseButton:{
-        paddingVertical: 10,
-        paddingHorizontal: 15,
+        width: 35,
+        height: 35,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: COLORS.primary,
         borderRadius: 20,    
             
@@ -94,8 +97,10 @@ export const styles = StyleSheet.create({
         fontSize: 16,
     },
     deleteButton:{
-        paddingVertical: 10,
-        paddingHorizontal: 15,
+        width: 35,
+        height: 35,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: COLORS.primary,
         borderRadius: 20,    
             
