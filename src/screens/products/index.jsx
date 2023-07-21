@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { View, Text, TouchableOpacity, FlatList, ImageBackground } from 'react-native';
 import { styles } from './styles';
 import { Input } from '../../components';
-import PRODUCTS from '../../constants/data/products.json';
 import { COLORS } from '../../themes';
+import { useSelector } from 'react-redux';
 
 function Product({ navigation, route }) {
     const { categoryId, color } = route.params;
+    const products = useSelector((state)=> state.products);
     const [search, setSearch] = useState('');
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [borderColor, setBorderColor] = useState(COLORS.primary);
