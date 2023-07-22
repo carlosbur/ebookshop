@@ -1,11 +1,15 @@
-import { View, Text, Image } from "react-native";
-import PRODUCTS from '../../constants/data/products.json'
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
+import { useSelector } from "react-redux";
+
 
 function ProductDetail({ navigation, route }) {
+    const products = useSelector((state) => state.products.data)
     const { color, productId } = route.params;
 
-    const product = PRODUCTS.find((product) => product.id == productId);
+    const product = products.find((product) => product.id == productId);
+
+    const onAddToCart = () => {};
 
     return(
         <View style={styles.container}>
@@ -19,10 +23,15 @@ function ProductDetail({ navigation, route }) {
                 <Text style={styles.tagTitle}>Tags</Text>
                 <View style={styles.containerTags}>
                     {product.tags.map((tag) => ( 
-                        <View key={tag} style={[styles.containerTag, {backgroundColor:color}]}>
+                        <TouchableOpacity key={tag} style={[styles.containerTag, {backgroundColor:color}]}>
                             <Text style={styles.tag}>{tag}</Text>
-                        </View>
+                        </TouchableOpacity>
                     ))}
+                </View>
+                <View style={styles.containerButton}>
+                    <TouchableOpacity onPress={onAddToCart} style={styles.addToCartButton}>
+                        <Text style={styles.addToCartText}>Add To Cart</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>       
