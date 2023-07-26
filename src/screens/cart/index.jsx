@@ -2,15 +2,32 @@ import { View, Text } from "react-native";
 import { styles } from "./styles";
 import { FlatList } from "react-native-gesture-handler";
 import { CartItem } from "../../components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { decreaseItemQuantity, increaseItemQuantity } from "../../store/cart/cart.slice";
 
 const Cart = () => {
     const cart = useSelector((state) => state.cart.items);
+    const dispatch = useDispatch();
+
+    const onIncreaseCartItem = (id) => {
+        dispatch(increaseItemQuantity({id}));
+    };
+
+    const onDecreaseCartItem = (id) => {
+        dispatch(decreaseItemQuantity({id}));
+    };
+
+
+
     return (
         <View style={styles.container}>
             <FlatList 
             data={cart}
-            renderItem={({ item }) => <CartItem {...item } /> }
+            renderItem={({ item }) => (
+            <CartItem {...item } 
+            onIncreaseCartItem={onIncreaseCartItem} 
+            onDecreaseCartItem={onDecreaseCartItem}
+            /> )}
             keyExtractor={(item) => item.id.toString()}
             style={styles.listContainer}
             />
