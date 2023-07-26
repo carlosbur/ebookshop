@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { styles } from './styles';
 import { COLORS } from '../../../themes';
 
-const CartItem = ({id, categoryId, name, price, image, currency, quantity,stock, onIncreaseCartItem, onDecreaseCartItem,}) => {
+const CartItem = ({id, categoryId, name, price, image, currency, quantity,stock, onIncreaseCartItem, onDecreaseCartItem, onRemoveCartItem,}) => {
     return(
         <View style={styles.container}>
             <View style={styles.imageContainer}>
@@ -20,7 +20,7 @@ const CartItem = ({id, categoryId, name, price, image, currency, quantity,stock,
                 <TouchableOpacity style={styles.decreaseButton} onPress={() => onDecreaseCartItem(id)}>
                     <Text style={styles.decreaseButtonText}>-</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {}} style={styles.deleteButton}>
+                <TouchableOpacity onPress={() => onRemoveCartItem(id)} style={styles.deleteButton}>
                     <Ionicons name='trash' size={16} color={COLORS.white} />
                 </TouchableOpacity>
             </View>

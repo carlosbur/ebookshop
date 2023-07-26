@@ -11,10 +11,14 @@ const cartSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             const itemInCart = state.items.find((item) => item.id === action.payload.id);
-            if (itemInCart && itemInCart.stock > itemInCart.quantity) {
+            if (itemInCart &&
+                state.items.find((item) => item.id === action.payload.id)?.quantity === itemInCart?.stock) {
+            return;
+            }
+            if (itemInCart?.stock > itemInCart?.quantity) {
                 itemInCart.quantity += 1;
             } 
-            if (!itemInCart || itemInCart.stock > itemInCart.quantity)
+            if (!itemInCart)
                 state.items.push(action.payload);
             },  
         increaseItemQuantity: (state, action) => {
