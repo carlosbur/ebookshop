@@ -20,29 +20,29 @@ function Categories({ navigation }) {
             </View>
         );
     return (
-        <SafeAreaView style={styles.container}>     
-        <View style={styles.container}>
-            <FlatList
-            data={data}
-            style={styles.categoryContainer}
-            contentContainerStyle={styles.listCategory}
-            renderItem={({ item }) => (
-                <CategoryItem
-                {...item}
-                onSelectCategory={() =>
-                    onSelectCategory({ categoryId: item.id, color: item.backgroundColor, name: item.name })
-                }
-                style={
-                    orientation == ORIENTATION.LANDSCAPE ? styles.categoryItemLandscape : {}
+        <View style={styles.container}>     
+            <View style={styles.container}>
+                <FlatList
+                data={data}
+                style={styles.categoryContainer}
+                contentContainerStyle={styles.listCategory}
+                renderItem={({ item }) => (
+                    <CategoryItem
+                    {...item}
+                    onSelectCategory={() =>
+                        onSelectCategory({ categoryId: item.id, color: item.backgroundColor, name: item.name })
+                    }
+                    style={
+                        orientation == ORIENTATION.LANDSCAPE ? styles.categoryItemLandscape : {}
 
-                }
+                    }
+                    />
+                )}
+                keyExtractor={(item) => item.id}
+                showsVerticalScrollIndicator={false}
                 />
-            )}
-            keyExtractor={(item) => item.id}
-            showsVerticalScrollIndicator={false}
-            />
+            </View>
         </View>
-        </SafeAreaView>
     );
 }
 

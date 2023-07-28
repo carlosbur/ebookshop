@@ -5,10 +5,11 @@ import { View, Text, TouchableOpacity, FlatList, ImageBackground } from 'react-n
 import { styles } from './styles';
 import { Input } from '../../components';
 import { COLORS } from '../../themes';
+import { useGetProductsByCategoryQuery } from '../../store/products/api';
 
 function Product({ navigation, route }) {
     const { categoryId, color } = route.params;
-    const products = useSelector((state) => state.products.data);
+    const {data, error, isLoading } = useGetProductsByCategoryQuery(categoryId)
     const [search, setSearch] = useState('');
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [borderColor, setBorderColor] = useState(COLORS.primary);
@@ -19,7 +20,7 @@ function Product({ navigation, route }) {
     };
     const onHandleFocus = () => {};
 
-    const filteredProductsByCategory = products.filter(
+    const filteredProductsByCategory = data?.filter(
         (product) => product.categoryId === categoryId
     );
 
