@@ -20,8 +20,37 @@ const Cart = () => {
 
     const onRemoveCartItem = (id) => {
         dispatch(removeItemFromCart({id}))
-    }
+    };
 
+    const onCreateOrder = () => {
+        const newOrder = {
+            id: Math.floor(Math.random() * 1000),
+            items: cart,
+            total,
+            user : {
+                id: 1,
+                name: 'Juan Perez',
+                address: '123 Street',
+                phone: '1223422',
+                email: 'juanperez@gmail.com',
+            },
+            payment: {
+                method: 'VISA',
+            },
+            delivery: {
+                method: 'UPS',
+                trackingNumber: Math.floor(Math.random() * 1000),
+            },
+        };
+    };
+
+    if(cart.length === 0) {
+        return (
+            <View style={styles.emptyContainer}>
+                <Text style={styles.emptyCartText}>Your cart is empty</Text>
+            </View>
+        )
+    }
     return (
         <View style={styles.container}>
             <FlatList 
@@ -36,7 +65,7 @@ const Cart = () => {
             style={styles.listContainer}
             />
         <View style={styles.footerContainer}>
-                <TouchableOpacity onPress={() => null} style={styles.checkoutButton}>
+                <TouchableOpacity onPress={onCreateOrder} style={styles.checkoutButton}>
                     <Text style={styles.checkoutButtonText}>Checkout</Text>
                     <View style={styles.totalContainer}>
                         <Text style={styles.totalText}>Total: </Text>
