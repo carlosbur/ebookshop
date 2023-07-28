@@ -64,5 +64,10 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         color: COLORS.white
     },
-
+    containerLoader:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+    },
 });

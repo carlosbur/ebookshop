@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { View, Text, TouchableOpacity, FlatList, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, ImageBackground, ActivityIndicator } from 'react-native';
 import { styles } from './styles';
 import { Input } from '../../components';
 import { COLORS } from '../../themes';
@@ -42,6 +42,14 @@ function Product({ navigation, route }) {
     const onSelectProduct = ({ productId, name }) => {
         navigation.navigate('ProductDetail', { productId, color, name })
     }
+
+
+    if (isLoading) 
+    return (
+        <View style={styles.containerLoader}>
+            <ActivityIndicator size={'large'} color={COLORS.primary} />
+        </View>
+    );
 
     return (
         <View style={styles.container}>
