@@ -3,12 +3,15 @@ import { styles } from "./styles";
 import { FlatList } from "react-native-gesture-handler";
 import { CartItem } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { decreaseItemQuantity, increaseItemQuantity, removeItemFromCart } from "../../store/cart/cart.slice";
+import { decreaseItemQuantity, increaseItemQuantity, removeItemFromCart, clearCart } from "../../store/cart/cart.slice";
+import { useCreateOrderMutation } from "../../store/orders/api";
 
-const Cart = () => {
+const Cart = ({ navigation }) => {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart.items);
     const total = useSelector((state) => state.cart.total);
+
+    const [createOrder, {data, irError, error, isLoading }] = useCreateOrderMutation();
 
     const onIncreaseCartItem = (id) => {
         dispatch(increaseItemQuantity({id}));
@@ -22,7 +25,7 @@ const Cart = () => {
         dispatch(removeItemFromCart({id}))
     };
 
-    const onCreateOrder = () => {
+    const onCreateOrder = async () => {
         const newOrder = {
             id: Math.floor(Math.random() * 1000),
             items: cart,
@@ -42,6 +45,15 @@ const Cart = () => {
                 trackingNumber: Math.floor(Math.random() * 1000),
             },
         };
+        
+        try {
+            await createOrder(newOrder);
+            dispatch(clearCart());
+            navigation.navigate('OrdersTab');
+        } catch (e) {
+            console.warn({error, e});
+        }
+    
     };
 
     if(cart.length === 0) {
@@ -50,7 +62,8 @@ const Cart = () => {
                 <Text style={styles.emptyCartText}>Your cart is empty</Text>
             </View>
         )
-    }
+    };
+    
     return (
         <View style={styles.container}>
             <FlatList 
