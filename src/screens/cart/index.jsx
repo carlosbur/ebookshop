@@ -44,6 +44,8 @@ const Cart = ({ navigation }) => {
                 method: 'UPS',
                 trackingNumber: Math.floor(Math.random() * 1000),
             },
+            createAt: new Date.now(),
+            finishedAt: '',
         };
         
         try {
