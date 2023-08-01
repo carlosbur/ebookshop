@@ -8,17 +8,21 @@ const Orders = () => {
     
     const renderItem = ({item}) => (
         <TouchableOpacity onPress={() => {}} style={styles.orderItem}>
-            <Text style={styles.orderItemId}>item.id</Text>
-            <Text style={styles.orderItemId}>item.total</Text>
-
+            <Text style={styles.orderItemId}>{item.id}</Text>
+            <Text style={styles.orderItemTotal}>{item.total}</Text>
+            <Text style={styles.orderItemDate}>{item.createAt}</Text>
         </TouchableOpacity> 
     )
+
+        const keyExtractor = (item) => item.id.toString();
+
+
     return (
         <View style={styles.container}>
             <FlatList 
                 data={data}
                 renderItem={renderItem}
-            
+                keyExtractor={keyExtractor}
             
             />
 
