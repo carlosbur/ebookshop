@@ -3,12 +3,33 @@ import { styles } from "./styles";
 import { COLORS } from "../../themes";
 import { View, Text, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import { useSignInMutation, useSignUpMutation } from "../../store/auth/api";
 
 const Auth = () => {
     const [isLogin, setIsLogin] = useState(true);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const headerTitle =  isLogin ? 'Login' : 'Register';
     const buttonTitle =  isLogin ? 'Login' : 'Register';
     const messageText =  isLogin ? 'Need an acount?' : 'Already have an acount';
+
+    const [signIn] = useSignInMutation();
+    const [signUp] = useSignUpMutation();
+
+
+    const onHandlerAuth = async () => {
+        try {
+            if (isLogin) {
+                await signIn({email, password});
+            } else {
+                await signUp({email, password});
+            }
+        }    catch (error) {
+
+            console.error(error)
+        }
+    };
+
 
     return (
         <View style={styles.container}>
@@ -21,7 +42,8 @@ const Auth = () => {
                     placeholderTextColor={COLORS.grey}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    onChangeText={()=> {}}
+                    onChangeText={(text)=> setEmail(text)}
+                    value={email}
                 />
                 <Text style={styles.label}>Password</Text>
                 <TextInput 
@@ -31,7 +53,8 @@ const Auth = () => {
                     autoCapitalize="none"
                     autoCorrect={false}
                     secureTextEntry={true}
-                    onChangeText={()=> {}}
+                    onChangeText={(text)=> setPassword(text)}
+                    value={password}
                 />
             
                 <View style={styles.linkContainer}>
@@ -40,7 +63,7 @@ const Auth = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={onHandlerAuth}>
                         <Text styles={styles.buttonText}> {buttonTitle} </Text>
                     </TouchableOpacity>
                 </View>

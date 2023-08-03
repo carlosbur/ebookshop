@@ -3,12 +3,15 @@ import ShopNavigator from "./shop";
 import TabNavigator from "./tabs";
 import { useState } from "react";
 import AuthNavigator from "./auth";
+import { useSelector } from "react-redux";
+
 
 function RootNavigator(){
-    const [userId, setUserId] = useState(null);
+    const state  = useSelector((state) => state)
+
     return(
         <NavigationContainer>
-            { userId ? <TabNavigator /> : <AuthNavigator/> }
+             <AuthNavigator/> 
         </NavigationContainer>
     )    
 }
