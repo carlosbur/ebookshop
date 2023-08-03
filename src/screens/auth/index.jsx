@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { styles } from "./styles";
 import { COLORS } from "../../themes";
 import { View, Text, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { useSignInMutation, useSignUpMutation } from "../../store/auth/api";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/auth/auth.slice";
 
 const Auth = () => {
+    const dispatch = useDispatch();
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -13,7 +16,7 @@ const Auth = () => {
     const buttonTitle =  isLogin ? 'Login' : 'Register';
     const messageText =  isLogin ? 'Need an acount?' : 'Already have an acount';
 
-    const [signIn] = useSignInMutation();
+    const [signIn, {data, }] = useSignInMutation();
     const [signUp] = useSignUpMutation();
 
 
@@ -27,10 +30,15 @@ const Auth = () => {
         }    catch (error) {
 
             console.error(error)
-        }
+        } 
     };
 
-
+    useEffect(()=>{
+        if(data){
+            dispatch(setUser(data));
+        }
+    }, [data]);
+    
     return (
         <View style={styles.container}>
             <View style={styles.content}>

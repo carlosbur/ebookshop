@@ -29,11 +29,6 @@ export const authApi = createApi({
 
 })
 
-export const selectAuthData = authApi.endpoints.signIn.select();
 
-export const authData = createSelector(
-    selectAuthData,
-    (authResult) => authResult.data
-)
 
 export const { useSignInMutation, useSignUpMutation } = authApi;

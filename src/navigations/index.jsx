@@ -1,17 +1,17 @@
 import { NavigationContainer } from "@react-navigation/native";
 import ShopNavigator from "./shop";
 import TabNavigator from "./tabs";
-import { useState } from "react";
+
 import AuthNavigator from "./auth";
 import { useSelector } from "react-redux";
 
 
 function RootNavigator(){
-    const state  = useSelector((state) => state)
+    const auth  = useSelector((state) => state.auth.user)
 
     return(
         <NavigationContainer>
-             <AuthNavigator/> 
+        {auth?.localId ? <TabNavigator/> : <AuthNavigator/> }  
         </NavigationContainer>
     )    
 }
