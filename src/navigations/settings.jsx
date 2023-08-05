@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { COLORS } from "../themes";
-import { Settings } from '../screens';
+import { Address, Profile, Settings } from '../screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -10,6 +10,8 @@ const SettingsNavigator = () =>{
             headerShown: false
             }}>
             <Stack.Screen name="Settings" component={Settings} />
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Address" component={Address} />
         </Stack.Navigator>
     )
 };
