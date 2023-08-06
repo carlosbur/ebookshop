@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { styles } from "./styles";
 import { COLORS } from "../../themes";
 import { View, Text, TouchableOpacity } from "react-native";
@@ -6,12 +6,39 @@ import { useSignInMutation, useSignUpMutation } from "../../store/auth/api";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../store/auth/auth.slice";
 import { InputForm } from "../../components";
+import { UPDATE_FORM, onInputChange } from "../../utils/form";
+
+const initialState = {
+    email : { value: '', error: '', touched: false, hasError: true },
+    password : { value: '', error: '', touched: false, hasError: true },
+    isFormValid: false,
+
+}
+
+const formReducer = ( state, action ) => {
+    switch (action.type) {
+        case UPDATE_FORM:
+            const { name, value, hasError, error, touched, isFormValid } = action.data;
+            return {
+                ...state,
+                [name]: {
+                    ...state[name],
+                    value,
+                    hasError,
+                    error,
+                    touched,
+                },
+                isFormValid,
+            };
+        default:
+            return state;
+    }
+}
 
 const Auth = () => {
     const dispatch = useDispatch();
+    const [formState, dispatchFormState] = useReducer(formReducer, initialState);
     const [isLogin, setIsLogin] = useState(true);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const headerTitle =  isLogin ? 'Login' : 'Register';
     const buttonTitle =  isLogin ? 'Login' : 'Register';
     const messageText =  isLogin ? 'Need an acount?' : 'Already have an acount';
@@ -23,10 +50,10 @@ const Auth = () => {
     const onHandlerAuth = async () => {
         try {
             if (isLogin) {
-                const result = await signIn({email, password});
+                const result = await signIn({email: formState.email.value, password: formState.password.value});
                 if(result?.data) dispatch(setUser(result.data));
             } else {
-                await signUp({email, password});
+                await signUp({email: formState.email.value, password: formState.password.value});
             }
         }    catch (error) {
 
@@ -34,6 +61,9 @@ const Auth = () => {
         } 
     };
 
+    const onHandlerInputChange = ({name, value}) => {
+        onInputChange({name, value, dispatch: dispatchFormState,formState})
+    }
 
     return (
         <View style={styles.container}>
@@ -44,9 +74,12 @@ const Auth = () => {
                     placeholderTextColor={COLORS.grey}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    onChangeText={(text)=> setEmail(text)}
-                    value={email}
+                    onChangeText={(text)=> onHandlerInputChange({value: text, name: 'email'})}
+                    value={formState.email.value}
                     label="Email"
+                    error={formState.email.error}
+                    touched={formState.email.touched}
+                    hasError={formState.email.hasError}
                 />
                 <InputForm
                     style={styles.input}
@@ -55,9 +88,12 @@ const Auth = () => {
                     autoCapitalize="none"
                     autoCorrect={false}
                     secureTextEntry={true}
-                    onChangeText={(text)=> setPassword(text)}
-                    value={password}
+                    onChangeText={(text)=> onHandlerInputChange({value: text, name: 'password'})}
+                    value={formState.password.value}
                     label="Password"
+                    error={formState.password.error}
+                    touched={formState.password.touched}
+                    hasError={formState.password.hasError}
                 />
             
                 <View style={styles.linkContainer}>
