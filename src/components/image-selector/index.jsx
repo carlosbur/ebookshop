@@ -2,9 +2,11 @@ import { TouchableOpacity, View, Text, Image } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from "./styles";
 import { COLORS } from "../../themes";
-import { requestCameraPermissionsAsync, launchCameraAsync, launchImageLibraryAsync, requestMediaLibraryPermissionsAsync} from 'expo-image-picker';
+import { requestCameraPermissionsAsync, launchCameraAsync} from 'expo-image-picker';
+import { useState } from "react";
 
-const ImageSelector = ({image, onSelect}) => {
+const ImageSelector = ({ profileImage ,onSelect}) => {
+    const [image, setImage] = useState(null);
     const verifyPermission = async () => {
         const {status} = await requestCameraPermissionsAsync();
         if (status !== 'granted'){
@@ -27,12 +29,14 @@ const ImageSelector = ({image, onSelect}) => {
             quality: 0.5,
             base64: true,   
         });
-        console.warn({result})
+
+        setImage(result.assets[0].uri);
+        onSelect({uri: result.assets[0].uri, base64: result.assets[0].base64} );
     }
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.content} onPress={onHandleTakePhoto}>
-                {image ? (
+                {(image || profileImage) ? (
                     <Image source={{ uri: image}} style={styles.image} />
                 ) : (
                     <Ionicons name="ios-camera" size={24} color={COLORS.primary} />
