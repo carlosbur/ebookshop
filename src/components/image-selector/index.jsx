@@ -30,14 +30,14 @@ const ImageSelector = ({ profileImage ,onSelect}) => {
             base64: true,   
         });
 
+        await onSelect({uri: result.assets[0].uri, base64: result.assets[0].base64} );
         setImage(result.assets[0].uri);
-        onSelect({uri: result.assets[0].uri, base64: result.assets[0].base64} );
     }
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.content} onPress={onHandleTakePhoto}>
                 {(image || profileImage) ? (
-                    <Image source={{ uri: image}} style={styles.image} />
+                    <Image source={{ uri: image || profileImage}} style={styles.image} resizeMode="contain"/>
                 ) : (
                     <Ionicons name="ios-camera" size={24} color={COLORS.primary} />
                 )}

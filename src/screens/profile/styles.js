@@ -11,5 +11,10 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 20,
     },
+    loading:{
+        justifyContent: "center",
+        alignItems: "center",
+        paddingVertical: 20,
+    }
 
 })
