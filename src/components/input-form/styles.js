@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         flex: 1
     },
     input: {
-        height: 45,
+        height: 35,
         borderBottomColor: COLORS.primary,
         borderBottomWidth: 1,
         width: '90%',
@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         marginVertical: 5,
     },
-    errorMessage: {
+    error: {
         fontSize: 12,
         fontFamily: "Montserrat-Regular",
         paddingVertical: 5,

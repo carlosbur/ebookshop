@@ -102,7 +102,9 @@ const Auth = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button} onPress={onHandlerAuth}>
+                    <TouchableOpacity 
+                    disabled={!formState.isFormValid} 
+                    style={ !formState.isFormValid ? styles.buttonDisabled : styles.button} onPress={onHandlerAuth}>
                         <Text styles={styles.buttonText}> {buttonTitle} </Text>
                     </TouchableOpacity>
                 </View>

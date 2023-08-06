@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
         width: '80%',
         maxWidth: 400,
         padding: 15,
-        minHeight: 335,
+        minHeight: 355,
         margin: 15,
         backgroundColor: COLORS.white,
         borderWidth: 1,
@@ -36,19 +36,7 @@ export const styles = StyleSheet.create({
         color: COLORS.text,
         paddingVertical: 10,
     },
-    label: {
-        fontFamily: 'Montserrat-Light',
-        fontSize: 14,
-        color: COLORS.text,
-    },
-    input: {
-        height: 45,
-        borderBottomColor: COLORS.primary,
-        borderBottomWidth: 1,
-        width: '90%',
-        fontFamily: 'Montserrat-Regular',
-        marginBottom: 5,
-    },
+
     linkContainer: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -79,12 +67,21 @@ export const styles = StyleSheet.create({
 
 
     },
+    buttonDisabled:{
+        backgroundColor: COLORS.grey,
+        width: 200,
+        height: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        
+    },
     buttonText: {
         fontFamily: 'Montserrat-Bold',
         fontSize: 14,
         textAlign: 'center',
         color: COLORS.white,
 
-    }
-
+    },
+    
 })
