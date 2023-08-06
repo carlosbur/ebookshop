@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { styles } from "./styles";
 import { COLORS } from "../../themes";
 import { View, Text, TouchableOpacity } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
 import { useSignInMutation, useSignUpMutation } from "../../store/auth/api";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../store/auth/auth.slice";
+import { InputForm } from "../../components";
 
 const Auth = () => {
     const dispatch = useDispatch();
@@ -39,18 +39,16 @@ const Auth = () => {
         <View style={styles.container}>
             <View style={styles.content}>
                 <Text style={styles.header}>{headerTitle}</Text>
-                <Text style={styles.label}>Email</Text>
-                <TextInput 
-                    style={styles.input}
+                <InputForm
                     placeholder="email@domain.com"
                     placeholderTextColor={COLORS.grey}
                     autoCapitalize="none"
                     autoCorrect={false}
                     onChangeText={(text)=> setEmail(text)}
                     value={email}
+                    label="Email"
                 />
-                <Text style={styles.label}>Password</Text>
-                <TextInput 
+                <InputForm
                     style={styles.input}
                     placeholder="*************"
                     placeholderTextColor={COLORS.grey}
@@ -59,6 +57,7 @@ const Auth = () => {
                     secureTextEntry={true}
                     onChangeText={(text)=> setPassword(text)}
                     value={password}
+                    label="Password"
                 />
             
                 <View style={styles.linkContainer}>
