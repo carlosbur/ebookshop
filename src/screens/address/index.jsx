@@ -1,50 +1,58 @@
-import { View, Text, Button, } from "react-native";
-import { styles } from "./styles";
-import { LocationSelector } from "../../components";
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from "react";
-import { GOOGLE_API_KEY, URL_BASE_GEOCODING } from '../../constants/maps';
-import { useUpdateAddressMutation } from '../../store/settings/api';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback, useState } from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 
-const Address = ({navigation}) => {
-    const localId = useSelector((state) => state.auth.user.localId);
-    const [location, setLocation] = useState(null);
-    const [address, setAddress] = useState(null);
-    const [updateAddress] = useUpdateAddressMutation();
-    const onLocation = async ({ lat, lng }) => {
-        setLocation({ lat, lng });
-    };
-    
-    const onHandlerUpdateLocation = () => {
-        updateAddress({ localId, address, location });
-        navigation.navigate('Settings');
-    };
+import { styles } from './styles';
+import { selectPlaces } from '../../db/index';
 
-    useEffect(() => {
-        if (location) {
-            const getGeocoding = async () => {
-                const response = await fetch(
-                `${URL_BASE_GEOCODING}/json?latlng=${location.lat},${location.lng}&key=${GOOGLE_API_KEY}`
-                );
-            const data = await response.json();
-    
-            if (!data.results) {
-                throw new Error('Something went wrong!');
-            }
-                const address = data.results[0].formatted_address;
-                setAddress(address);
-            };
-            getGeocoding();
-        }
-    }, [location]);
-    
+const Address = ({ navigation }) => {
+  const [places, setPlaces] = useState([]);
+  const handlePress = () => {
+    navigation.navigate('CreateAddress');
+  };
 
-    return(
-        <View style={styles.container}>
-            <LocationSelector onLocation={onLocation}/>
-            <Button title="Confirm" onPress={onHandlerUpdateLocation} />
+  useFocusEffect(
+    useCallback(() => {
+      const getPlaces = async () => {
+        const places = await selectPlaces();
+        setPlaces(places);
+      };
+      getPlaces();
+
+      return () => {
+        setPlaces([]);
+      };
+    }, [])
+  );
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={places}
+        renderItem={({ item }) => {
+          const { lat, lng } = JSON.parse(item.coords);
+          return (
+            <View style={styles.itemContainer}>
+              <View style={styles.mapImageContainer}>
+                <Image source={{ uri: item.image }} style={styles.mapImage} />
+              </View>
+              <View style={styles.itemDetailsContainer}>
+                <Text style={styles.itemAddress}>{item.address}</Text>
+                <Text style={styles.itemCoords}>{`Lat: ${lat} Lng: ${lng}`}</Text>
+              </View>
+            </View>
+          );
+        }}
+        keyExtractor={(item) => item.id.toString()}
+      />
+      <TouchableOpacity style={styles.floatingButton} onPress={handlePress}>
+        <View style={styles.floatingButtonTextContainer}>
+          <Text style={styles.floatingButtonText}>+</Text>
         </View>
-    )
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 export default Address;

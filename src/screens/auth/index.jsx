@@ -67,8 +67,8 @@ const Auth = () => {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.header}>{headerTitle}</Text>
             <View style={styles.content}>
-                <Text style={styles.header}>{headerTitle}</Text>
                 <InputForm
                     placeholder="email@domain.com"
                     placeholderTextColor={COLORS.grey}

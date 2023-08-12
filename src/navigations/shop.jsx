@@ -2,13 +2,16 @@ import { createNativeStackNavigator} from "@react-navigation/native-stack";
 
 import { Categories, Products, ProductDetail } from '../screens'
 import { COLORS } from "../themes";
-import { Ionicons } from '@expo/vector-icons'
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import { useDispatch } from 'react-redux';
+import { Animated, Platform, StyleSheet, TouchableOpacity } from "react-native";
 import SettingsNavigator from "./settings";
+import { logout } from '../store/auth/auth.slice';
 
 const Stack = createNativeStackNavigator();
 
 function ShopNavigator(){
+    const dispatch = useDispatch();
     return (
         <Stack.Navigator initialRouteName="Categories" screenOptions= {({navigation}) => ({ 
         headerStyle: {
@@ -24,7 +27,12 @@ function ShopNavigator(){
             <TouchableOpacity style={styles.icon}>
                 <Ionicons name="settings-outline" size={24} color={COLORS.white} onPress={() => navigation.navigate('SettingsStack')}/>
             </TouchableOpacity>
-        )
+        ),
+        headerLeft: () => (
+            <TouchableOpacity style={styles.icon} onPress={() => dispatch(logout())}>
+                <Ionicons name="ios-log-out-outline" size={24} color={COLORS.white} />
+            </TouchableOpacity>
+        ),
         })}>
             <Stack.Screen name="Categories" component={Categories} />
             <Stack.Screen name="Products" component={Products} options={ ({navigation, route}) => ({
@@ -67,8 +75,15 @@ const styles = StyleSheet.create({
     goBack: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 10,
+        marginRight: Platform.OS === 'android' ? 15 : 0,
     },
+    goBackText: {
+        fontSize: 14,
+        color: COLORS.text
+    },
+    icon:{
+        marginRight: Platform.OS === 'android' ? 15 : 0,
+    }
 })
 
 export default ShopNavigator;

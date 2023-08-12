@@ -8,8 +8,8 @@ export const styles = StyleSheet.create({
     orderItemContainer:{
         flex: 1,
         flexDirection: 'row',
-        height: 145,
-        backgroundColor: COLORS.white,
+        height: 100,
+        backgroundColor: COLORS.background,
         shadowColor: '#000',
         shadowOffset: {
         width: 0,
@@ -22,14 +22,14 @@ export const styles = StyleSheet.create({
         marginHorizontal: 15,
         marginTop: 15,
         justifyContent: 'space-around',
-        alignItems: 'center',
-        borderRadius: 5,
+        alignItems: 'flex-start',
+        borderRadius: 10,
         },
 orderHeaderContainer:{
     flex: 1,
 },
 orderItemDate:{
-    fontFamily: 'Montserrat-Bold',
+    fontFamily: 'Montserrat-Medium',
     fontSize: 14,
     color: COLORS.text
 },

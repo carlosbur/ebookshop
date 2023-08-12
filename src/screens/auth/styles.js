@@ -30,8 +30,8 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
     },
     header: {
-        fontFamily: 'Montserrat-Medium',
-        fontSize: 16,
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 22,
         textAlign: 'center',
         color: COLORS.text,
         paddingVertical: 10,

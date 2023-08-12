@@ -1,18 +1,13 @@
-import { View, Image } from "react-native";
-import { URL_MAPS } from "../../constants/maps";
-import { styles } from "./styles";
+import { View, Image } from 'react-native';
 
-const MapPreview = ({children, location, style}) => {
-    const { lat, lng } = location || {} ;
-    const mapPreviewUrlImage = location? URL_MAPS({ lat, lng, zoom: 14}) : "";
+import { styles } from './styles';
+
+const MapPreview = ({ children, location, style, mapImage }) => {
     return (
-        <View style={{...styles.container, ...style}}>
-            {
-                location ?
-                <Image style={styles.mapImage} source={{uri: mapPreviewUrlImage}}/> : children
-            }
+        <View style={{ ...styles.container, ...style }}>
+            {location ? <Image style={styles.mapImage} source={{ uri: mapImage }} /> : children}
         </View>
-    )
-}
+    );
+};
 
 export default MapPreview;

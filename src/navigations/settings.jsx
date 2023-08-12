@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { COLORS } from "../themes";
-import { Address, Profile, Settings } from '../screens';
+import { Address, Profile, Settings, CreateAddress, Maps } from '../screens';
 import { TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons'
 
@@ -28,7 +28,15 @@ const SettingsNavigator = () =>{
             })}>
             <Stack.Screen name="Settings" component={Settings} />
             <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen
+                name="CreateAddress"
+                component={CreateAddress}
+                options={{
+                    headerTitle: 'Create Address',
+                }}
+            />
             <Stack.Screen name="Address" component={Address} />
+            <Stack.Screen name="Maps" component={Maps} />
         </Stack.Navigator>
     )
 };
@@ -37,7 +45,11 @@ const styles = StyleSheet.create({
     goBack: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 10,
+        marginRight: Platform.OS === 'android' ? 15 : 0,
+    },
+    goBackText: {
+        fontSize: 14,
+        color: COLORS.text,
     },
 })
 
