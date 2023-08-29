@@ -17,7 +17,7 @@ const OrdersNavigator = () => {
             headerTintColor: COLORS.white,
             animation: 'slide_from_bottom'
             }}>
-            <Stack.Screen name="Orders" component={Orders} />
+            <Stack.Screen name="Tus compras" component={Orders} />
         </Stack.Navigator>
     )
 };

@@ -6,7 +6,7 @@ const Header = ({ title }) =>{
     const isTablet = width > 650
     return (
         <View style={isTablet ? styles.tabletContainer : styles.container}>
-            <Text style={isTablet ? styles.tabletTitle : styles.title}>{title}</Text>
+            <Text style={isTablet ? styles.tabletTitle : styles.title} numberOfLines={2}>{title}</Text>
         </View>
     )
 }

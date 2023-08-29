@@ -57,4 +57,8 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         
     },
+    author: {
+        fontSize: 15,
+        fontWeight: 'bold',
+    }
 });

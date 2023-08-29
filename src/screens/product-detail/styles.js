@@ -27,6 +27,11 @@ export const styles = StyleSheet.create({
         fontFamily: 'Montserrat-Bold',
         fontSize: 18,
     },
+
+    author: {
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 16,
+    },
     price: {
         fontFamily: 'Montserrat-Bold',
         fontSize: 20,

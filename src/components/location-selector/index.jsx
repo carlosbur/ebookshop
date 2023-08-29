@@ -17,9 +17,9 @@ const LocationSelector = ({ onLocation }) => {
 
     if (status !== 'granted') {
       Alert.alert(
-        'Insufficient permissions!',
-        'You need to grant location permissions to use this app.',
-        [{ text: 'Okay' }]
+        'Permisos insuficientes',
+        'Necesitamos permisos para utilizar tu ubicación.',
+        [{ text: 'De acuerdo!' }]
       );
 
       return false;
@@ -55,10 +55,10 @@ const LocationSelector = ({ onLocation }) => {
   return (
     <View style={styles.container}>
       <MapPreview location={pickedLocation} style={styles.preview} mapImage={mapPreviewUrlImage}>
-        <Text style={styles.text}>No location chosen yet!</Text>
+        <Text style={styles.text}>Ninguna dirección guardada aún!</Text>
       </MapPreview>
-      <Button title="Get User Location" onPress={onHandlerGetLocation} color={COLORS.primary} />
-      <Button title="Select on map" onPress={onHandlerGetLocation} color={COLORS.primary} />
+      <Button title="Usar ubicación actual" onPress={onHandlerGetLocation} color={COLORS.primary} />
+      <Button title="Elegir en el mapa" onPress={onHandlerGetLocation} color={COLORS.primary} />
     </View>
   );
 };

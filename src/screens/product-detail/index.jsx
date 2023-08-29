@@ -29,10 +29,11 @@ function ProductDetail({ navigation, route }) {
                 <Image source={{uri: product.image}} style={styles.image} resizeMode="contain" />
             </View>
             <View style={styles.content}>
-                <Text style={styles.name}>{product.name}</Text>
+                <Text style={styles.name} numberOfLines={2}>{product.name}</Text>
+                <Text style={styles.author}>{product.author}</Text>
                 <Text style={styles.description}>{product.description}</Text>
                 <Text style={styles.price}>ARS {product.price}</Text>
-                <Text style={styles.tagTitle}>Tags</Text>
+                <Text style={styles.tagTitle}>Etiquetas</Text>
                 <View style={styles.containerTags}>
                     {product.tags.map((tag) => ( 
                         <TouchableOpacity key={tag} style={[styles.containerTag, {backgroundColor:color}]}>
@@ -42,7 +43,7 @@ function ProductDetail({ navigation, route }) {
                 </View>
                 <View style={styles.containerButton}>
                     <TouchableOpacity onPress={onAddToCart} style={styles.addToCartButton}>
-                        <Text style={styles.addToCartText}>Add To Cart</Text>
+                        <Text style={styles.addToCartText}>Agregar al carrito</Text>
                     </TouchableOpacity>
                 </View>
             </View>

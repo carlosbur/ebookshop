@@ -29,7 +29,6 @@ const CreateAddress = ({ navigation }) => {
       image: mapImageUrl,
     });
     updateAddress({ localId, address: addressName.data, location });
-    console.warn({ result });
     navigation.goBack();
   };
 
@@ -47,7 +46,7 @@ const CreateAddress = ({ navigation }) => {
     <View style={styles.container}>
       <LocationSelector onLocation={onLocation} />
       <View style={styles.buttonContainer}>
-        <Button title="Confirm" onPress={onHandlerUpdateLocation} color={COLORS.secondary} />
+        <Button title="Confirmar" onPress={onHandlerUpdateLocation} color={COLORS.secondary} />
       </View>
     </View>
   );

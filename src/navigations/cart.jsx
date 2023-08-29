@@ -17,7 +17,7 @@ const CartNavigator = () =>{
             headerTintColor: COLORS.white,
             animation: 'slide_from_bottom'
             }}>
-            <Stack.Screen name="Cart" component={Cart} />
+            <Stack.Screen name="Carrito" component={Cart} />
         </Stack.Navigator>
     )
 };

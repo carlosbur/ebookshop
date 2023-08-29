@@ -4,7 +4,7 @@ import { Categories, Products, ProductDetail } from '../screens'
 import { COLORS } from "../themes";
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
-import { Animated, Platform, StyleSheet, TouchableOpacity } from "react-native";
+import { Animated, Platform, StyleSheet, TouchableOpacity, Text } from "react-native";
 import SettingsNavigator from "./settings";
 import { logout } from '../store/auth/auth.slice';
 
@@ -19,7 +19,10 @@ function ShopNavigator(){
         },
         headerTitleStyle: {
             fontFamily: 'Montserrat-Bold',
-            fontSize: 20,
+            fontSize: 16,
+            numberOfLines: 2,
+            ellipsizeMode: 'tail'
+
         },
         headerTintColor: COLORS.white,
         animation: 'slide_from_bottom',
@@ -34,7 +37,7 @@ function ShopNavigator(){
             </TouchableOpacity>
         ),
         })}>
-            <Stack.Screen name="Categories" component={Categories} />
+            <Stack.Screen name="Categorías" component={Categories} />
             <Stack.Screen name="Products" component={Products} options={ ({navigation, route}) => ({
                 headerStyle:{
                     backgroundColor: route.params.color,                    
@@ -44,13 +47,14 @@ function ShopNavigator(){
                     <Ionicons name="arrow-back-circle" size={30} color={COLORS.white} />
                     </TouchableOpacity>
                 ),
-                title: route.params.name,
+                title: route.params.name
             })} 
             />
             <Stack.Screen name="ProductDetail" component={ProductDetail} options={ ({navigation, route}) => ({
                 headerStyle:{
-                    backgroundColor: route.params.color,                    
+                    backgroundColor: route.params.color,
                 },
+
                 headerLeft: () => (
                     <TouchableOpacity style={styles.goBack} onPress={() => navigation.goBack()}>
                     <Ionicons name="arrow-back-circle" size={30} color={COLORS.white} />

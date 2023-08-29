@@ -8,10 +8,8 @@ import { COLORS } from '../../themes';
 const MapsScreen = ({ navigation, route }) => {
   const { location } = route.params;
 
-  console.warn({ location });
-
-  const onPickedLocation = (coordinate) => {
-    console.warn({ coordinate });
+    const onPickedLocation = (coordinate) => {
+    
   };
 
   navigation.setOptions({

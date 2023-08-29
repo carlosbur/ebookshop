@@ -13,10 +13,10 @@ const validateInput = ({name, value}) => {
         case 'email':
             if(formatValue === '') {
                 hasError = true;
-                error = `${name} is required`
+                error = `${name} es obligatorio`
             } else if (!formatEmail.test(formatValue)){
                 hasError = true;
-                error = `${name} is not valid`
+                error = `${name} no es válido`
             } else {
                 hasError =false;
                 error = '';           
@@ -25,10 +25,10 @@ const validateInput = ({name, value}) => {
         case 'password':
             if (formatValue === '') {
                 hasError = true;
-                error= `${name} is required`;
+                error= `${name} es obligatorio`;
             } else if (formatValue.length < minPasswordLength) {
                 hasError = true;
-                error= `${name} must be at least ${minPasswordLength} characters`;
+                error= `${name} debe tener como mínimo ${minPasswordLength} caracteres`;
             } else {
                 hasError =false;
                 error = '';      

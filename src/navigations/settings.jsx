@@ -23,7 +23,7 @@ const SettingsNavigator = () =>{
                 <Ionicons name="arrow-back-circle" size={30} color={COLORS.white} />
                 </TouchableOpacity>
             ),
-            title: 'Settings',
+            title: 'Configuración',
             headerRight: null,
             })}>
             <Stack.Screen name="Settings" component={Settings} />
@@ -32,7 +32,7 @@ const SettingsNavigator = () =>{
                 name="CreateAddress"
                 component={CreateAddress}
                 options={{
-                    headerTitle: 'Create Address',
+                    headerTitle: 'Guardar tu dirección',
                 }}
             />
             <Stack.Screen name="Address" component={Address} />

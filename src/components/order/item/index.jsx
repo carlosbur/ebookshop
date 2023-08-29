@@ -14,8 +14,8 @@ export const OrderItem = ({id, total, createAt, items}) => {
             </View>
             <View style={styles.orderBody}>
                 <Text style={styles.orderItemId}>Id: {id}</Text>
-                <Text style={styles.orderItemTotal}>USD {total}</Text>
-                <Text style={styles.orderItemId}>Total Items: {items.length}</Text>
+                <Text style={styles.orderItemTotal}>ARS {total}</Text>
+                <Text style={styles.orderItemId}>Productos totales: {items.length}</Text>
             </View>
         </TouchableOpacity>
     );

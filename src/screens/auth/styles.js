@@ -12,8 +12,9 @@ export const styles = StyleSheet.create({
     content: {
         width: '80%',
         maxWidth: 400,
-        padding: 15,
-        minHeight: 355,
+        paddingHorizontal: 15,
+        paddingVertical: 25,
+        minHeight: 400,
         margin: 15,
         backgroundColor: COLORS.white,
         borderWidth: 1,

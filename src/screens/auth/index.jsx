@@ -39,9 +39,9 @@ const Auth = () => {
     const dispatch = useDispatch();
     const [formState, dispatchFormState] = useReducer(formReducer, initialState);
     const [isLogin, setIsLogin] = useState(true);
-    const headerTitle =  isLogin ? 'Login' : 'Register';
-    const buttonTitle =  isLogin ? 'Login' : 'Register';
-    const messageText =  isLogin ? 'Need an acount?' : 'Already have an acount';
+    const headerTitle =  isLogin ? 'Ingresar' : 'Registrarse';
+    const buttonTitle =  isLogin ? 'Ingresar' : 'Registrarse';
+    const messageText =  isLogin ? 'Necesitas una cuenta?' : 'Ya tengo mi cuenta!';
 
     const [signIn, {data, }] = useSignInMutation();
     const [signUp] = useSignUpMutation();
@@ -70,13 +70,13 @@ const Auth = () => {
             <Text style={styles.header}>{headerTitle}</Text>
             <View style={styles.content}>
                 <InputForm
-                    placeholder="email@domain.com"
+                    placeholder="tucorreo@mail.com"
                     placeholderTextColor={COLORS.grey}
                     autoCapitalize="none"
                     autoCorrect={false}
                     onChangeText={(text)=> onHandlerInputChange({value: text, name: 'email'})}
                     value={formState.email.value}
-                    label="Email"
+                    label="Correo"
                     error={formState.email.error}
                     touched={formState.email.touched}
                     hasError={formState.email.hasError}
@@ -90,7 +90,7 @@ const Auth = () => {
                     secureTextEntry={true}
                     onChangeText={(text)=> onHandlerInputChange({value: text, name: 'password'})}
                     value={formState.password.value}
-                    label="Password"
+                    label="Contraseña"
                     error={formState.password.error}
                     touched={formState.password.touched}
                     hasError={formState.password.hasError}

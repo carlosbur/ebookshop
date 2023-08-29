@@ -11,9 +11,9 @@ const ImageSelector = ({ profileImage ,onSelect}) => {
         const {status} = await requestCameraPermissionsAsync();
         if (status !== 'granted'){
             Alert.alert(
-                "Permission denied",
-                "You need to grant camera permissions to use this app.", [
-                {text: "Okay"},
+                "Permisos denegados",
+                "Necesitas permiso para usar tu cámara!", [
+                {text: "De acuerdo!"},
                 ]);
             return false;
         }

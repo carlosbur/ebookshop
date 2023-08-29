@@ -53,7 +53,7 @@ const Cart = ({ navigation }) => {
             dispatch(clearCart());
             navigation.navigate('OrdersTab');
         } catch (e) {
-            console.warn({error, e});
+        
         }
     
     };
@@ -61,7 +61,7 @@ const Cart = ({ navigation }) => {
     if(cart.length === 0) {
         return (
             <View style={styles.emptyContainer}>
-                <Text style={styles.emptyCartText}>Your cart is empty</Text>
+                <Text style={styles.emptyCartText}>Tu carrito está vacío</Text>
             </View>
         )
     };
@@ -81,10 +81,10 @@ const Cart = ({ navigation }) => {
             />
         <View style={styles.footerContainer}>
                 <TouchableOpacity onPress={onCreateOrder} style={styles.checkoutButton}>
-                    <Text style={styles.checkoutButtonText}>Checkout</Text>
+                    <Text style={styles.checkoutButtonText}>Finalizar compra</Text>
                     <View style={styles.totalContainer}>
                         <Text style={styles.totalText}>Total: </Text>
-                        <Text style={styles.totalPrice}>USD {total} </Text>
+                        <Text style={styles.totalPrice}>ARS {total} </Text>
                     </View>
                 </TouchableOpacity>
         </View>
