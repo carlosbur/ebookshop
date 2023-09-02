@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { View, Button } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { LocationSelector } from '../../../components';
-import { URL_MAPS } from '../../../constants/maps';
 import { insertPlace } from '../../../db';
-import { mapsApi, useLazyGetGeocodingQuery } from '../../../store/maps/api';
+import { useLazyGetGeocodingQuery } from '../../../store/maps/api';
 import { useUpdateAddressMutation } from '../../../store/settings/api';
 import { COLORS } from '../../../themes';
 

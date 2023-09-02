@@ -1,6 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { View, Text, TouchableOpacity, FlatList, ImageBackground, ActivityIndicator } from 'react-native';
 import { styles } from './styles';
 import { Input } from '../../components';

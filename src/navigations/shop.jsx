@@ -4,7 +4,7 @@ import { Categories, Products, ProductDetail } from '../screens'
 import { COLORS } from "../themes";
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
-import { Animated, Platform, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import SettingsNavigator from "./settings";
 import { logout } from '../store/auth/auth.slice';
 
